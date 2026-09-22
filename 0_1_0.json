@@ -1,65 +1,46 @@
 {
   "models": [
     {
-      "name": "Qwen2-0.5B-Instruct",
-      "modelId": "litert-community/Qwen2-0.5B-Instruct",
-      "modelFile": "Qwen2_0.5B_Instruct.litertlm",
-      "description": "A variant of [Qwen/Qwen2-0.5B-Instruct](https://huggingface.co/Qwen/Qwen2-0.5B-Instruct) ready for deployment on Android using [LiteRT-LM](https://github.com/google-ai-edge/LiteRT-LM/blob/main/kotlin/README.md).",
-      "sizeInBytes": 647377840,
-      "commitHash": "13aab3e522828d85fa178d885716ab858a715149",
+      "name": "Gemma-4-E4B-it (text-only)",
+      "modelId": "DarrenJiaImbue/gemma-4-E4B-it-qat-litertlm",
+      "modelFile": "gemma-4-E4B-it-qat.litertlm",
+      "description": "Text-only Gemma 4 E4B mobile QAT model, packaged for LiteRT-LM by a community contributor. No image or audio input; 4K context. Download: 3.25 GB. The 2.2 GB figure is an approximate inference-memory estimate, not the file size.",
+      "sizeInBytes": 3254493296,
+      "commitHash": "a9c6beea02917b453bd60045cb6ee23e14d91535",
+      "minDeviceMemoryInGb": 8,
+      "llmSupportImage": false,
+      "llmSupportAudio": false,
       "defaultConfig": {
-        "accelerators": "cpu,gpu"
-      },
-      "taskTypes": [
-        "llm_chat"
-      ]
-    },
-    {
-      "name": "Qwen3-0.6B",
-      "modelId": "litert-community/Qwen3-0.6B",
-      "modelFile": "Qwen3-0.6B_dynamic_wi4b32_afp32.litertlm",
-      "description": "A variant of [Qwen/Qwen3-0.6B](https://huggingface.co/Qwen/Qwen3-0.6B) ready for deployment on Android using [LiteRT-LM](https://github.com/google-ai-edge/LiteRT-LM/blob/main/kotlin/README.md).",
-      "sizeInBytes": 344437808,
-      "commitHash": "8414150f2e9dcc82449bcc9c5abc404b399a4d06",
-      "defaultConfig": {
+        "topK": 64,
+        "topP": 0.95,
+        "temperature": 0.7,
+        "maxContextLength": 4096,
+        "maxTokens": 4096,
         "accelerators": "cpu,gpu"
       },
       "taskTypes": [
         "llm_chat",
         "llm_prompt_lab",
         "llm_agent_chat"
-      ],
-      "capabilities": [
-        "llm_thinking",
-        "llm_benchmark"
-      ],
-      "capabilityToTaskTypes": {
-        "llm_thinking": [
-          "llm_chat"
-        ]
-      }
+      ]
     },
     {
-      "name": "Gemma-4-E2B-it",
-      "modelId": "litert-community/gemma-4-E2B-it-litert-lm",
-      "modelFile": "gemma-4-E2B-it.litertlm",
-      "description": "A variant of Gemma 4 E2B ready for deployment on Android using [LiteRT-LM](https://github.com/google-ai-edge/LiteRT-LM/blob/main/docs/api/kotlin/getting_started.md). It supports multi-modality input, with up to 32K context length.",
-      "sizeInBytes": 2588147712,
-      "minDeviceMemoryInGb": 8,
-      "commitHash": "6e5c4f1e395deb959c494953478fa5cec4b8008f",
+      "name": "Gemma-4-E4B-it",
+      "modelId": "litert-community/gemma-4-E4B-it-litert-lm",
+      "modelFile": "gemma-4-E4B-it.litertlm",
+      "description": "Google mobile-optimized Gemma 4 E4B for LiteRT-LM, with text, image and audio input. Download: 3.66 GB. Recommended for devices with at least 12 GB RAM.",
+      "sizeInBytes": 3659530240,
+      "commitHash": "2eee7ac325f20eb8c9ac1d0e972f7c84663062da",
+      "minDeviceMemoryInGb": 12,
       "llmSupportImage": true,
       "llmSupportAudio": true,
-      "capabilities": [
-        "llm_thinking",
-        "speculative_decoding"
-      ],
       "defaultConfig": {
         "topK": 64,
         "topP": 0.95,
-        "temperature": 1.0,
+        "temperature": 0.7,
         "maxContextLength": 32000,
-        "maxTokens": 4000,
-        "accelerators": "gpu,cpu",
+        "maxTokens": 4096,
+        "accelerators": "cpu,gpu",
         "visionAccelerator": "gpu"
       },
       "taskTypes": [
@@ -69,12 +50,9 @@
         "llm_ask_image",
         "llm_ask_audio"
       ],
-      "bestForTaskTypes": [
-        "llm_chat",
-        "llm_prompt_lab",
-        "llm_agent_chat",
-        "llm_ask_image",
-        "llm_ask_audio"
+      "capabilities": [
+        "llm_thinking",
+        "speculative_decoding"
       ],
       "capabilityToTaskTypes": {
         "llm_thinking": [
@@ -88,14 +66,83 @@
           "llm_ask_audio",
           "llm_prompt_lab"
         ]
+      }
+    },
+    {
+      "name": "Gemma-3n-E4B-it",
+      "modelId": "google/gemma-3n-E4B-it-litert-lm",
+      "modelFile": "gemma-3n-E4B-it-int4.litertlm",
+      "description": "Gemma 3n E4B with INT4 weights and text, image and audio input. Official LiteRT-LM build, not GGUF. Download: 4.92 GB. Requires Hugging Face sign-in and access to the Gemma license-gated repository.",
+      "sizeInBytes": 4919541760,
+      "commitHash": "297ed75955702dec3503e00c2c2ecbbf475300bc",
+      "minDeviceMemoryInGb": 12,
+      "llmSupportImage": true,
+      "llmSupportAudio": true,
+      "defaultConfig": {
+        "topK": 64,
+        "topP": 0.95,
+        "temperature": 0.7,
+        "maxContextLength": 4096,
+        "maxTokens": 4096,
+        "accelerators": "cpu,gpu"
       },
-      "updatableModelFiles": [
-        {
-          "fileName": "gemma-4-E2B-it.litertlm",
-          "commitHash": "7fa1d78473894f7e736a21d920c3aa80f950c0db"
-        }
-      ],
-      "updateInfo": "The updated model now leverages Gemma 4's built-in Multi Token Prediction (MTP) for faster decode on select workloads. You can enable or disable MTP using a new toggle in chat configuration."
+      "taskTypes": [
+        "llm_chat",
+        "llm_prompt_lab",
+        "llm_agent_chat",
+        "llm_ask_image",
+        "llm_ask_audio"
+      ]
+    },
+    {
+      "name": "Gemma-3n-E2B-it",
+      "modelId": "google/gemma-3n-E2B-it-litert-lm",
+      "modelFile": "gemma-3n-E2B-it-int4.litertlm",
+      "description": "Smaller Gemma 3n model with INT4 weights and text, image and audio input. Official LiteRT-LM build. Download: 3.66 GB. Requires Hugging Face sign-in and access to the Gemma license-gated repository.",
+      "sizeInBytes": 3655827456,
+      "commitHash": "c03b6f60b8da6c5400b6838a2cf26420f80c0a01",
+      "minDeviceMemoryInGb": 8,
+      "llmSupportImage": true,
+      "llmSupportAudio": true,
+      "defaultConfig": {
+        "topK": 64,
+        "topP": 0.95,
+        "temperature": 0.7,
+        "maxContextLength": 4096,
+        "maxTokens": 4096,
+        "accelerators": "cpu,gpu"
+      },
+      "taskTypes": [
+        "llm_chat",
+        "llm_prompt_lab",
+        "llm_agent_chat",
+        "llm_ask_image",
+        "llm_ask_audio"
+      ]
+    },
+    {
+      "name": "MiniCPM5-2B-int4",
+      "modelId": "mlboydaisuke/MiniCPM5-2B-LiteRT",
+      "modelFile": "MiniCPM5-2B_int4.litertlm",
+      "description": "Compact MiniCPM5-2B community conversion for LiteRT-LM, with the original tool-calling chat template. INT4 build, not Q4_K_M GGUF. Download: 1.55 GB. Direct-answer mode is used because long INT4 reasoning can exhaust the token budget.",
+      "sizeInBytes": 1553670064,
+      "commitHash": "013a833905ab93a33f53bf561514e18076d131e6",
+      "minDeviceMemoryInGb": 6,
+      "llmSupportImage": false,
+      "llmSupportAudio": false,
+      "defaultConfig": {
+        "topK": 64,
+        "topP": 0.95,
+        "temperature": 0.7,
+        "maxContextLength": 4096,
+        "maxTokens": 4096,
+        "accelerators": "cpu,gpu"
+      },
+      "taskTypes": [
+        "llm_chat",
+        "llm_prompt_lab",
+        "llm_agent_chat"
+      ]
     },
     {
       "name": "TinyGarden-270M",
