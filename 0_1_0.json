@@ -1,48 +1,27 @@
 {
-  "schemaVersion": 2,
+  "schemaVersion": 3,
   "models": [
     {
-      "name": "Gemma-4-E4B-it (text-only)",
-      "modelId": "DarrenJiaImbue/gemma-4-E4B-it-qat-litertlm",
-      "modelFile": "gemma-4-E4B-it-qat.litertlm",
-      "description": "Text-only Gemma 4 E4B mobile QAT model, packaged for LiteRT-LM by a community contributor. No image or audio input; 4K context. Download: 3.25 GB. The 2.2 GB figure is an approximate inference-memory estimate, not the file size.",
-      "sizeInBytes": 3254493296,
-      "commitHash": "a9c6beea02917b453bd60045cb6ee23e14d91535",
+      "name": "Gemma-4-E2B-it",
+      "modelId": "litert-community/gemma-4-E2B-it-litert-lm",
+      "modelFile": "gemma-4-E2B-it.litertlm",
+      "description": "A variant of Gemma 4 E2B ready for deployment on Android using [LiteRT-LM](https://github.com/google-ai-edge/LiteRT-LM/blob/main/docs/api/kotlin/getting_started.md). It supports multi-modality input, with up to 32K context length.",
+      "sizeInBytes": 2588147712,
       "minDeviceMemoryInGb": 8,
-      "llmSupportImage": false,
-      "llmSupportAudio": false,
-      "defaultConfig": {
-        "topK": 64,
-        "topP": 0.95,
-        "temperature": 0.7,
-        "maxContextLength": 4096,
-        "maxTokens": 4096,
-        "accelerators": "cpu,gpu"
-      },
-      "taskTypes": [
-        "llm_chat",
-        "llm_prompt_lab",
-        "llm_agent_chat"
-      ],
-      "sha256": "39628c0b53c5f2ba47e5ef8804f0a796d8b1780e34d2f4c840fd97d7b3b550d9"
-    },
-    {
-      "name": "Gemma-4-E4B-it",
-      "modelId": "litert-community/gemma-4-E4B-it-litert-lm",
-      "modelFile": "gemma-4-E4B-it.litertlm",
-      "description": "Google mobile-optimized Gemma 4 E4B for LiteRT-LM, with text, image and audio input. Download: 3.66 GB. Recommended for devices with at least 12 GB RAM.",
-      "sizeInBytes": 3659530240,
-      "commitHash": "2eee7ac325f20eb8c9ac1d0e972f7c84663062da",
-      "minDeviceMemoryInGb": 12,
+      "commitHash": "6e5c4f1e395deb959c494953478fa5cec4b8008f",
       "llmSupportImage": true,
       "llmSupportAudio": true,
+      "capabilities": [
+        "llm_thinking",
+        "speculative_decoding"
+      ],
       "defaultConfig": {
         "topK": 64,
         "topP": 0.95,
-        "temperature": 0.7,
+        "temperature": 1.0,
         "maxContextLength": 32000,
-        "maxTokens": 4096,
-        "accelerators": "cpu,gpu",
+        "maxTokens": 4000,
+        "accelerators": "gpu,cpu",
         "visionAccelerator": "gpu"
       },
       "taskTypes": [
@@ -52,9 +31,12 @@
         "llm_ask_image",
         "llm_ask_audio"
       ],
-      "capabilities": [
-        "llm_thinking",
-        "speculative_decoding"
+      "bestForTaskTypes": [
+        "llm_chat",
+        "llm_prompt_lab",
+        "llm_agent_chat",
+        "llm_ask_image",
+        "llm_ask_audio"
       ],
       "capabilityToTaskTypes": {
         "llm_thinking": [
@@ -69,25 +51,37 @@
           "llm_prompt_lab"
         ]
       },
-      "sha256": "0b2a8980ce155fd97673d8e820b4d29d9c7d99b8fa6806f425d969b145bd52e0"
+      "updatableModelFiles": [
+        {
+          "fileName": "gemma-4-E2B-it.litertlm",
+          "commitHash": "7fa1d78473894f7e736a21d920c3aa80f950c0db"
+        }
+      ],
+      "updateInfo": "The updated model now leverages Gemma 4's built-in Multi Token Prediction (MTP) for faster decode on select workloads. You can enable or disable MTP using a new toggle in chat configuration.",
+      "sha256": "181938105e0eefd105961417e8da75903eacda102c4fce9ce90f50b97139a63c"
     },
     {
-      "name": "Gemma-3n-E4B-it",
-      "modelId": "nmrenyi/gemma-3n-E4B-it-litert-lm",
-      "modelFile": "gemma-3n-E4B-it-int4.litertlm",
-      "description": "Gemma 3n E4B with INT4 weights and text, image and audio input. Official LiteRT-LM build, not GGUF. Download: 4.92 GB. Requires Hugging Face sign-in and access to the Gemma license-gated repository.",
-      "sizeInBytes": 4919541760,
-      "commitHash": "a014e476a0f31ed92fc500ce6fa04591b3a8cfec",
+      "name": "Gemma-4-E4B-it",
+      "modelId": "litert-community/gemma-4-E4B-it-litert-lm",
+      "modelFile": "gemma-4-E4B-it.litertlm",
+      "description": "A variant of Gemma 4 E4B ready for deployment on Android using [LiteRT-LM](https://github.com/google-ai-edge/LiteRT-LM/blob/main/docs/api/kotlin/getting_started.md). It supports multi-modality input, with up to 32K context length.",
+      "sizeInBytes": 3659530240,
       "minDeviceMemoryInGb": 12,
+      "commitHash": "28299f30ee4d43294517a4ac93abd6163412f07f",
       "llmSupportImage": true,
       "llmSupportAudio": true,
+      "capabilities": [
+        "llm_thinking",
+        "speculative_decoding"
+      ],
       "defaultConfig": {
         "topK": 64,
         "topP": 0.95,
-        "temperature": 0.7,
-        "maxContextLength": 4096,
-        "maxTokens": 4096,
-        "accelerators": "cpu,gpu"
+        "temperature": 1.0,
+        "maxContextLength": 32000,
+        "maxTokens": 4000,
+        "accelerators": "gpu,cpu",
+        "visionAccelerator": "gpu"
       },
       "taskTypes": [
         "llm_chat",
@@ -96,59 +90,34 @@
         "llm_ask_image",
         "llm_ask_audio"
       ],
-      "sha256": "2e67a6cd51dfe0f793431e6bd4ed8d029c88e10f52ca0469ad38445e3cd3c1f4"
-    },
-    {
-      "name": "Gemma-3n-E2B-it",
-      "modelId": "MiCkSoftware/gemma-3n-E2B-it-litert-lm",
-      "modelFile": "gemma-3n-E2B-it-int4.litertlm",
-      "description": "Smaller Gemma 3n model with INT4 weights and text, image and audio input. Official LiteRT-LM build. Download: 3.66 GB. Requires Hugging Face sign-in and access to the Gemma license-gated repository.",
-      "sizeInBytes": 3655827456,
-      "commitHash": "0387099e25a759df5559e3cb3052e6fc051cde73",
-      "minDeviceMemoryInGb": 8,
-      "llmSupportImage": true,
-      "llmSupportAudio": true,
-      "defaultConfig": {
-        "topK": 64,
-        "topP": 0.95,
-        "temperature": 0.7,
-        "maxContextLength": 4096,
-        "maxTokens": 4096,
-        "accelerators": "cpu,gpu"
-      },
-      "taskTypes": [
+      "bestForTaskTypes": [
         "llm_chat",
         "llm_prompt_lab",
         "llm_agent_chat",
         "llm_ask_image",
         "llm_ask_audio"
       ],
-      "sha256": "2ed7bc3a0026c93d5b8a4544b352d9d00cd66ff0bac3ef6a20ac3d2cba4010d6"
-    },
-    {
-      "name": "MiniCPM5-2B-int4",
-      "modelId": "mlboydaisuke/MiniCPM5-2B-LiteRT",
-      "modelFile": "MiniCPM5-2B_int4.litertlm",
-      "description": "Compact MiniCPM5-2B community conversion for LiteRT-LM, with the original tool-calling chat template. INT4 build, not Q4_K_M GGUF. Download: 1.55 GB. Direct-answer mode is used because long INT4 reasoning can exhaust the token budget.",
-      "sizeInBytes": 1553670064,
-      "commitHash": "013a833905ab93a33f53bf561514e18076d131e6",
-      "minDeviceMemoryInGb": 6,
-      "llmSupportImage": false,
-      "llmSupportAudio": false,
-      "defaultConfig": {
-        "topK": 64,
-        "topP": 0.95,
-        "temperature": 0.7,
-        "maxContextLength": 4096,
-        "maxTokens": 4096,
-        "accelerators": "cpu,gpu"
+      "capabilityToTaskTypes": {
+        "llm_thinking": [
+          "llm_chat",
+          "llm_ask_image",
+          "llm_ask_audio"
+        ],
+        "speculative_decoding": [
+          "llm_chat",
+          "llm_ask_image",
+          "llm_ask_audio",
+          "llm_prompt_lab"
+        ]
       },
-      "taskTypes": [
-        "llm_chat",
-        "llm_prompt_lab",
-        "llm_agent_chat"
+      "updatableModelFiles": [
+        {
+          "fileName": "gemma-4-E4B-it.litertlm",
+          "commitHash": "9695417f248178c63a9f318c6e0c56cb917cb837"
+        }
       ],
-      "sha256": "6caaa7622f8d382a0d7bc18762c58ff37b8fe076d04916ded2f75d5ffd00b7c9"
+      "updateInfo": "The updated model now leverages Gemma 4's built-in Multi Token Prediction (MTP) for faster decode on select workloads. You can enable or disable MTP using a new toggle in chat configuration.",
+      "sha256": "0b2a8980ce155fd97673d8e820b4d29d9c7d99b8fa6806f425d969b145bd52e0"
     },
     {
       "name": "TinyGarden-270M",
