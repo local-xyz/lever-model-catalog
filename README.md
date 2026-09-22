@@ -14,12 +14,12 @@ The chat catalog contains the following five choices. Download sizes are decimal
 publisher file metadata. Minimum device RAM values are catalog eligibility thresholds, not measured
 runtime peaks; the Android picker applies its existing device-memory filter.
 
-| Model and pinned source | Download | Minimum device RAM |
+| Model and pinned download source | Download | Minimum device RAM |
 | --- | ---: | ---: |
 | [Gemma-4-E4B-it (text-only)](https://huggingface.co/DarrenJiaImbue/gemma-4-E4B-it-qat-litertlm/tree/a9c6beea02917b453bd60045cb6ee23e14d91535) | 3.25 GB | 8 GB |
 | [Gemma-4-E4B-it](https://huggingface.co/litert-community/gemma-4-E4B-it-litert-lm/tree/2eee7ac325f20eb8c9ac1d0e972f7c84663062da) | 3.66 GB | 12 GB |
-| [Gemma-3n-E4B-it](https://huggingface.co/google/gemma-3n-E4B-it-litert-lm/tree/297ed75955702dec3503e00c2c2ecbbf475300bc) | 4.92 GB | 12 GB |
-| [Gemma-3n-E2B-it](https://huggingface.co/google/gemma-3n-E2B-it-litert-lm/tree/c03b6f60b8da6c5400b6838a2cf26420f80c0a01) | 3.66 GB | 8 GB |
+| [Gemma-3n-E4B-it](https://huggingface.co/nmrenyi/gemma-3n-E4B-it-litert-lm/tree/a014e476a0f31ed92fc500ce6fa04591b3a8cfec) | 4.92 GB | 12 GB |
+| [Gemma-3n-E2B-it](https://huggingface.co/MiCkSoftware/gemma-3n-E2B-it-litert-lm/tree/0387099e25a759df5559e3cb3052e6fc051cde73) | 3.66 GB | 8 GB |
 | [MiniCPM5-2B-int4](https://huggingface.co/mlboydaisuke/MiniCPM5-2B-LiteRT/tree/013a833905ab93a33f53bf561514e18076d131e6) | 1.55 GB | 6 GB |
 
 - Gemma 4's 2.2/2.5 GB mobile figures describe approximate inference memory, not download size.
@@ -27,10 +27,9 @@ runtime peaks; the Android picker applies its existing device-memory filter.
 - The text-only E4B is a community conversion of Google's mobile QAT checkpoint. It has a 4096-token
   context and no vision, audio or speculative-decoding sections. The official full E4B build retains
   those capabilities. The GPU/web-only artifacts are not substituted for a CPU-capable phone model.
-- Gemma 3n uses Google's INT4 LiteRT-LM artifacts, not Q4 GGUF. Both repositories require the user's
-  Hugging Face access and license acceptance. The install screen checks access and offers a masked
-  read-token field plus links to the publisher model/license page and token settings. Only a token
-  that successfully accesses the selected model is saved locally. Cancelling cannot start a download.
+- Gemma 3n uses Google's INT4 LiteRT-LM artifacts, not Q4 GGUF. Google’s original repositories are gated. This catalog uses public copies with SHA-256 values
+  matching the originals; Lever handles Gemma terms locally without a Hugging Face account.
+  No user tokens or shared developer credentials are required.
 - MiniCPM uses the publisher's LiteRT INT4 conversion, not Q4_K_M GGUF. It requires LiteRT-LM 0.16+
   (the app uses 0.17.1). Its original tool-call template is preserved. No thinking toggle is advertised:
   the app's existing `enable_thinking=false` default avoids the publisher's reported INT4 reasoning
@@ -38,18 +37,13 @@ runtime peaks; the Android picker applies its existing device-memory filter.
 - Qwen2, Qwen3 and the previous Gemma 4 E2B chat entry are removed. The separate Tiny Garden,
   Mobile Actions and Magic touch models remain for their dedicated features.
 
-The pinned download URLs for both Gemma 4 variants and MiniCPM returned HTTP 200 with matching
-content lengths. Gemma 3n returned the expected anonymous HTTP 401 / GatedRepo response; its pinned
-file sizes were checked through the publisher metadata API. These checks establish artifact identity
-and format compatibility, not a full inference benchmark on every phone.
+All five chat artifacts returned anonymous HTTP 206 with a LiteRT-LM header on 2026-09-22.
+Schema 2 adds mandatory SHA-256 values for supported chat models. Current Lever builds check the
+entire downloaded artifact before use and reject pre-migration catalogs containing gated URLs.
 
-## Updating
-
-1. Edit the catalog for the app version you intend to support. Preserve the existing JSON schema and model identifiers.
-2. Keep model artifact revisions pinned where the provider supports them. Review download URLs, file sizes, runtime capabilities and task types.
-3. Validate JSON with `python3 -m json.tool 0_1_0.json > /dev/null`, then commit and push to `main`.
-4. For a new app release, publish its versioned file before shipping. Copy the same reviewed catalog into the app's bundled catalog source when building that release.
-
-Online clients pick up updates on a subsequent app launch. Invalid or unavailable responses fall back to the last valid cache, then the bundled copy. Bundled metadata does not include model weights; downloading a model still needs connectivity.
-
-Catalog metadata is distributed under Apache-2.0; see LICENSE and NOTICE. Each model retains its publisher's license.
+Gemma 3n public copies are pinned to
+[MiCkSoftware E2B](https://huggingface.co/MiCkSoftware/gemma-3n-E2B-it-litert-lm/tree/0387099e25a759df5559e3cb3052e6fc051cde73)
+and [nmrenyi E4B](https://huggingface.co/nmrenyi/gemma-3n-E4B-it-litert-lm/tree/a014e476a0f31ed92fc500ce6fa04591b3a8cfec).
+Their file sizes and hashes match the Google originals. Lever bundles the applicable Gemma terms,
+use policy and NOTICE, asks for local agreement, and copies the documents beside these model files.
+Community source availability may change; replacement sources must preserve the verified hash.

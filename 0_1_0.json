@@ -1,4 +1,5 @@
 {
+  "schemaVersion": 2,
   "models": [
     {
       "name": "Gemma-4-E4B-it (text-only)",
@@ -22,7 +23,8 @@
         "llm_chat",
         "llm_prompt_lab",
         "llm_agent_chat"
-      ]
+      ],
+      "sha256": "39628c0b53c5f2ba47e5ef8804f0a796d8b1780e34d2f4c840fd97d7b3b550d9"
     },
     {
       "name": "Gemma-4-E4B-it",
@@ -66,15 +68,16 @@
           "llm_ask_audio",
           "llm_prompt_lab"
         ]
-      }
+      },
+      "sha256": "0b2a8980ce155fd97673d8e820b4d29d9c7d99b8fa6806f425d969b145bd52e0"
     },
     {
       "name": "Gemma-3n-E4B-it",
-      "modelId": "google/gemma-3n-E4B-it-litert-lm",
+      "modelId": "nmrenyi/gemma-3n-E4B-it-litert-lm",
       "modelFile": "gemma-3n-E4B-it-int4.litertlm",
       "description": "Gemma 3n E4B with INT4 weights and text, image and audio input. Official LiteRT-LM build, not GGUF. Download: 4.92 GB. Requires Hugging Face sign-in and access to the Gemma license-gated repository.",
       "sizeInBytes": 4919541760,
-      "commitHash": "297ed75955702dec3503e00c2c2ecbbf475300bc",
+      "commitHash": "a014e476a0f31ed92fc500ce6fa04591b3a8cfec",
       "minDeviceMemoryInGb": 12,
       "llmSupportImage": true,
       "llmSupportAudio": true,
@@ -92,15 +95,16 @@
         "llm_agent_chat",
         "llm_ask_image",
         "llm_ask_audio"
-      ]
+      ],
+      "sha256": "2e67a6cd51dfe0f793431e6bd4ed8d029c88e10f52ca0469ad38445e3cd3c1f4"
     },
     {
       "name": "Gemma-3n-E2B-it",
-      "modelId": "google/gemma-3n-E2B-it-litert-lm",
+      "modelId": "MiCkSoftware/gemma-3n-E2B-it-litert-lm",
       "modelFile": "gemma-3n-E2B-it-int4.litertlm",
       "description": "Smaller Gemma 3n model with INT4 weights and text, image and audio input. Official LiteRT-LM build. Download: 3.66 GB. Requires Hugging Face sign-in and access to the Gemma license-gated repository.",
       "sizeInBytes": 3655827456,
-      "commitHash": "c03b6f60b8da6c5400b6838a2cf26420f80c0a01",
+      "commitHash": "0387099e25a759df5559e3cb3052e6fc051cde73",
       "minDeviceMemoryInGb": 8,
       "llmSupportImage": true,
       "llmSupportAudio": true,
@@ -118,7 +122,8 @@
         "llm_agent_chat",
         "llm_ask_image",
         "llm_ask_audio"
-      ]
+      ],
+      "sha256": "2ed7bc3a0026c93d5b8a4544b352d9d00cd66ff0bac3ef6a20ac3d2cba4010d6"
     },
     {
       "name": "MiniCPM5-2B-int4",
@@ -142,7 +147,8 @@
         "llm_chat",
         "llm_prompt_lab",
         "llm_agent_chat"
-      ]
+      ],
+      "sha256": "6caaa7622f8d382a0d7bc18762c58ff37b8fe076d04916ded2f75d5ffd00b7c9"
     },
     {
       "name": "TinyGarden-270M",
