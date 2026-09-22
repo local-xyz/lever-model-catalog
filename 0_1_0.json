@@ -1,0 +1,160 @@
+{
+  "models": [
+    {
+      "name": "Qwen2-0.5B-Instruct",
+      "modelId": "litert-community/Qwen2-0.5B-Instruct",
+      "modelFile": "Qwen2_0.5B_Instruct.litertlm",
+      "description": "A variant of [Qwen/Qwen2-0.5B-Instruct](https://huggingface.co/Qwen/Qwen2-0.5B-Instruct) ready for deployment on Android using [LiteRT-LM](https://github.com/google-ai-edge/LiteRT-LM/blob/main/kotlin/README.md).",
+      "sizeInBytes": 647377840,
+      "commitHash": "13aab3e522828d85fa178d885716ab858a715149",
+      "defaultConfig": {
+        "accelerators": "cpu,gpu"
+      },
+      "taskTypes": [
+        "llm_chat"
+      ]
+    },
+    {
+      "name": "Qwen3-0.6B",
+      "modelId": "litert-community/Qwen3-0.6B",
+      "modelFile": "Qwen3-0.6B_dynamic_wi4b32_afp32.litertlm",
+      "description": "A variant of [Qwen/Qwen3-0.6B](https://huggingface.co/Qwen/Qwen3-0.6B) ready for deployment on Android using [LiteRT-LM](https://github.com/google-ai-edge/LiteRT-LM/blob/main/kotlin/README.md).",
+      "sizeInBytes": 344437808,
+      "commitHash": "8414150f2e9dcc82449bcc9c5abc404b399a4d06",
+      "defaultConfig": {
+        "accelerators": "cpu,gpu"
+      },
+      "taskTypes": [
+        "llm_chat",
+        "llm_prompt_lab",
+        "llm_agent_chat"
+      ],
+      "capabilities": [
+        "llm_thinking",
+        "llm_benchmark"
+      ],
+      "capabilityToTaskTypes": {
+        "llm_thinking": [
+          "llm_chat"
+        ]
+      }
+    },
+    {
+      "name": "Gemma-4-E2B-it",
+      "modelId": "litert-community/gemma-4-E2B-it-litert-lm",
+      "modelFile": "gemma-4-E2B-it.litertlm",
+      "description": "A variant of Gemma 4 E2B ready for deployment on Android using [LiteRT-LM](https://github.com/google-ai-edge/LiteRT-LM/blob/main/docs/api/kotlin/getting_started.md). It supports multi-modality input, with up to 32K context length.",
+      "sizeInBytes": 2588147712,
+      "minDeviceMemoryInGb": 8,
+      "commitHash": "6e5c4f1e395deb959c494953478fa5cec4b8008f",
+      "llmSupportImage": true,
+      "llmSupportAudio": true,
+      "capabilities": [
+        "llm_thinking",
+        "speculative_decoding"
+      ],
+      "defaultConfig": {
+        "topK": 64,
+        "topP": 0.95,
+        "temperature": 1.0,
+        "maxContextLength": 32000,
+        "maxTokens": 4000,
+        "accelerators": "gpu,cpu",
+        "visionAccelerator": "gpu"
+      },
+      "taskTypes": [
+        "llm_chat",
+        "llm_prompt_lab",
+        "llm_agent_chat",
+        "llm_ask_image",
+        "llm_ask_audio"
+      ],
+      "bestForTaskTypes": [
+        "llm_chat",
+        "llm_prompt_lab",
+        "llm_agent_chat",
+        "llm_ask_image",
+        "llm_ask_audio"
+      ],
+      "capabilityToTaskTypes": {
+        "llm_thinking": [
+          "llm_chat",
+          "llm_ask_image",
+          "llm_ask_audio"
+        ],
+        "speculative_decoding": [
+          "llm_chat",
+          "llm_ask_image",
+          "llm_ask_audio",
+          "llm_prompt_lab"
+        ]
+      },
+      "updatableModelFiles": [
+        {
+          "fileName": "gemma-4-E2B-it.litertlm",
+          "commitHash": "7fa1d78473894f7e736a21d920c3aa80f950c0db"
+        }
+      ],
+      "updateInfo": "The updated model now leverages Gemma 4's built-in Multi Token Prediction (MTP) for faster decode on select workloads. You can enable or disable MTP using a new toggle in chat configuration."
+    },
+    {
+      "name": "TinyGarden-270M",
+      "modelId": "litert-community/functiongemma-270m-ft-tiny-garden",
+      "modelFile": "tiny_garden_q8_ekv1024.litertlm",
+      "description": "Fine-tuned Function Gemma 270M model for Tiny Garden.",
+      "sizeInBytes": 288964608,
+      "minDeviceMemoryInGb": 6,
+      "commitHash": "c205853ff82da86141a1105faa2344a8b176dfe7",
+      "defaultConfig": {
+        "topK": 64,
+        "topP": 0.95,
+        "temperature": 0.0,
+        "maxTokens": 1024,
+        "accelerators": "cpu"
+      },
+      "taskTypes": [
+        "llm_tiny_garden"
+      ],
+      "bestForTaskTypes": [
+        "llm_tiny_garden"
+      ]
+    },
+    {
+      "name": "MobileActions-270M",
+      "modelId": "litert-community/functiongemma-270m-ft-mobile-actions",
+      "modelFile": "mobile_actions_q8_ekv1024.litertlm",
+      "description": "Fine-tuned Function Gemma 270M model for Mobile Actions.",
+      "sizeInBytes": 288964608,
+      "minDeviceMemoryInGb": 6,
+      "commitHash": "38942192c9b723af836d489074823ff33d4a3e7a",
+      "defaultConfig": {
+        "topK": 64,
+        "topP": 0.95,
+        "temperature": 0.0,
+        "maxTokens": 1024,
+        "accelerators": "cpu"
+      },
+      "taskTypes": [
+        "llm_mobile_actions"
+      ],
+      "bestForTaskTypes": [
+        "llm_mobile_actions"
+      ]
+    },
+    {
+      "name": "Magic touch",
+      "modelId": "magic_touch",
+      "modelFile": "interactive_segmentation.task",
+      "description": "This model identifies segments given image coordinates for an area of interest. The model uses a Convolutional Neural Network, similar to a MobileNetV3 architecture, with a customized decoder.",
+      "url": "https://storage.googleapis.com/mediapipe-models/interactive_segmenter_v2/magic_touch/int8/latest/interactive_segmentation.task",
+      "sizeInBytes": 30525312,
+      "commitHash": "20260810",
+      "taskTypes": [
+        "mp_scrapbook"
+      ],
+      "bestForTaskTypes": [
+        "mp_scrapbook"
+      ]
+    }
+  ]
+}
